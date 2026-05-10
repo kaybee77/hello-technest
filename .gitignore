@@ -1,0 +1,4 @@
+hello-technest/node_modules/
+hello-technest/dist/
+.DS_Store
+*.log

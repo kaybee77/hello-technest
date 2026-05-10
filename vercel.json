@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "cd hello-technest && npm ci",
+  "buildCommand": "cd hello-technest && npm run build",
+  "outputDirectory": "hello-technest/dist"
+}
