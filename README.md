@@ -1,66 +1,101 @@
-# hello-technest
+# Personal Portfolio
 
-A minimal **Technest Week 1** personal landing page: Vite + React, versioned on GitHub, deployed to production on every push to `main`.
+A single-page developer portfolio built with **React + Vite + TypeScript**, styled with **Tailwind CSS v4**, with shadcn-style UI primitives, `lucide-react` icons, `framer-motion` for subtle motion, and a built-in light/dark theme.
 
-**Live site:** [technest-week-1.vercel.app](https://technest-week-1.vercel.app) · **Repository:** [github.com/kaybee77/hello-technest](https://github.com/kaybee77/hello-technest)
-
-> **Preview:** Open the live URL above for the current production build. (You can add an in-repo screenshot later, e.g. `docs/preview.png`, and reference it here with `![Preview](docs/preview.png)`.)
-
-## Tech stack
-
-| Piece | What we picked | Why |
-|--------|----------------|-----|
-| UI | **React 19** | Component model and ecosystem fit a small page that may grow later. |
-| Bundler / dev server | **Vite 8** | Very fast local feedback (HMR) and a simple `npm run build` → static `dist/` output. |
-| Hosting | **Vercel** | Static hosting on the edge, automatic builds from GitHub, preview/production flows. |
-| Repo layout | **App in `hello-technest/`, root `vercel.json`** | Keeps the Vite app in a subfolder while Vercel installs and builds from the repo root. |
-| Version control | **Git + GitHub** | Standard collaboration, history, and the webhook that triggers Vercel. |
-
-## Run locally
+## Quick start
 
 ```bash
-cd hello-technest
 npm install
 npm run dev
 ```
 
-Then open the URL Vite prints (typically `http://localhost:5173`).
+Open <http://localhost:5173>.
 
-**Production build (optional sanity check):**
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Type-check (`tsc -b`) and build for production into `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Type-check only |
+
+## Customising the content
+
+All copy lives in `src/data/` — you generally **don't need to touch the components** to make this your own.
+
+- `src/data/profile.ts` — Your name, title, tagline, location, bio, email, socials, resume URL, avatar URL.
+- `src/data/skills.ts` — Skill groups (Languages, Frontend, Backend, Tools).
+- `src/data/projects.ts` — Project cards (title, description, tech, GitHub, live URL).
+- `src/data/experience.ts` — Roles for the experience timeline.
+
+### Assets
+
+Drop your assets into `public/` and reference them by absolute path:
+
+- `public/avatar.jpg` — Your headshot (referenced by `profile.avatarUrl`)
+- `public/resume.pdf` — Your CV (referenced by `profile.resumeUrl`)
+- `public/favicon.svg` — Browser tab icon (already includes a placeholder)
+- `public/og-image.png` — 1200x630 image used for link previews (referenced from `index.html`)
+
+### SEO
+
+Edit the `<title>` and `<meta>` tags in [`index.html`](index.html) to match your name and description.
+
+## Theming
+
+- Light/dark theme is controlled by the `dark` class on `<html>`.
+- Initial theme is set by a tiny inline script in `index.html` (reads `localStorage` or `prefers-color-scheme`) to avoid a flash on load.
+- Toggle is in `src/components/ThemeToggle.tsx`, hook in `src/hooks/useTheme.ts`.
+- Design tokens (colors, radius, fonts) live as CSS variables in `src/index.css` under `@theme` and `.dark`. Change the `--color-brand` HSL there to recolor the whole site.
+
+## Project structure
+
+```
+public/                static assets (favicon, resume, avatar, og-image)
+src/
+  components/
+    ui/                Button, Card, Badge primitives
+    Header.tsx         Sticky nav + mobile menu
+    Hero.tsx           Intro section with CTAs
+    About.tsx
+    Skills.tsx
+    Projects.tsx
+    Experience.tsx
+    Contact.tsx
+    Footer.tsx
+    SectionHeading.tsx Shared section heading
+    ThemeToggle.tsx
+  data/                Editable content (profile, skills, projects, experience)
+  hooks/useTheme.ts
+  lib/utils.ts         cn() helper (clsx + tailwind-merge)
+  App.tsx              Composes all sections
+  main.tsx             React entry
+  index.css            Tailwind v4 + design tokens
+index.html             SEO + theme bootstrap script
+vite.config.ts         Vite + Tailwind v4 plugin + @ alias
+tsconfig*.json
+package.json
+```
+
+## Deploying to Vercel
+
+This site is a pure static SPA, so it deploys anywhere — Vercel is the simplest path:
 
 ```bash
-cd hello-technest
-npm run build
-npm run preview
+npm install -g vercel
+vercel
 ```
 
-## Deploy pipeline
+Accept the defaults. Vercel auto-detects Vite and configures:
 
-Pushes to `main` on GitHub trigger a production deployment on Vercel (Git integration). Root [`vercel.json`](vercel.json) runs install/build inside `hello-technest/` and publishes `hello-technest/dist`.
+- Build command: `npm run build`
+- Output directory: `dist`
 
-```mermaid
-flowchart LR
-  localEdits["Local edits"]
-  gitPush["git push"]
-  githubRepo["GitHub"]
-  vercelWebhook["Vercel webhook"]
-  liveUrl["Live URL"]
+For future deploys: `vercel --prod`.
 
-  localEdits -->|"commit"| gitPush
-  gitPush -->|"push main"| githubRepo
-  githubRepo -->|"POST webhook"| vercelWebhook
-  vercelWebhook -->|"build and alias"| liveUrl
-```
-
-## Repository layout
-
-```text
-.
-├── hello-technest/     # Vite + React app (source)
-├── vercel.json         # Vercel install/build/output paths
-└── README.md           # This file
-```
+You can also push the repo to GitHub and import it from the Vercel dashboard for automatic deploys on every push.
 
 ## License
 
-No `LICENSE` file in this repository unless you add one.
+Personal use. Replace this with your preferred license once you're ready to share.
