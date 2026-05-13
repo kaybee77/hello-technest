@@ -27,6 +27,12 @@ export const projects: Project[] = [
     tech: ["PostgreSQL", "Python", "SQL", "LAS Files"],
   },
   {
+    title: "Driver Emotion Monitoring System",
+    description:
+      "End-to-end real-time driver emotion recognition system built in MATLAB using deep learning and computer vision. Processed 5,000+ image frames through a custom preprocessing and augmentation pipeline, then benchmarked multiple architectures before fine-tuning VGG to achieve 94% detection accuracy. Developed as an MSc Capstone for an industry brief from Jaguar Land Rover.",
+    tech: ["MATLAB", "Deep Learning", "Computer Vision", "VGG", "Data Augmentation"],
+  },
+  {
     title: "Blackjack AI Player",
     description:
       "AI decision algorithm in Java automating player decision-making across all standard Blackjack game states, demonstrating algorithmic design and object-oriented programming principles.",

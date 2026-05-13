@@ -42,14 +42,4 @@ export const experience: ExperienceEntry[] = [
       "Reviewed and tested REST APIs with 8-tier role-based access control, validating permission management and ensuring correct access behavior across all user roles.",
     ],
   },
-  {
-    role: "MSc Capstone Intern — Driver Emotion Monitoring System",
-    company: "Kingston University London · Industry Brief: Jaguar Land Rover",
-    period: "2022 — 2023",
-    bullets: [
-      "Independently designed and developed an end-to-end real-time driver emotion monitoring system in MATLAB, using deep learning and computer vision techniques.",
-      "Created a MATLAB data preprocessing and augmentation workflow to process 5,000+ image frames, building a robust training dataset to support deep learning model development.",
-      "Benchmarked and evaluated multiple deep learning architectures, selecting and fine-tuning VGG to achieve 94% detection accuracy in controlled testing environments.",
-    ],
-  },
 ];
