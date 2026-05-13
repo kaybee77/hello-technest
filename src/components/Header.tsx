@@ -15,6 +15,7 @@ const navItems = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -23,10 +24,30 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const ids = navItems.map((item) => item.href.slice(1));
+    const observers: IntersectionObserver[] = [];
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { threshold: 0.35 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-colors",
+        "sticky top-0 z-50 w-full transition-colors duration-200",
         scrolled
           ? "border-b border-border bg-background/80 backdrop-blur"
           : "bg-transparent"
@@ -35,21 +56,33 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="#top"
-          className="text-base font-semibold tracking-tight hover:text-brand"
+          className="font-mono text-sm font-semibold tracking-tight text-brand transition-opacity hover:opacity-80"
         >
-          {`<your-name />`}
+          {"<your-name />"}
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const id = item.href.slice(1);
+            const isActive = activeSection === id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "relative rounded-md px-3 py-2 text-sm transition-colors",
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                )}
+              >
+                {item.label}
+                {isActive && (
+                  <span className="absolute inset-x-3 bottom-1 h-0.5 rounded-full bg-brand" />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-1">

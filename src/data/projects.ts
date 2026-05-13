@@ -9,33 +9,27 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "ecoNext",
+    title: "Engineering RAG for OEM Manuals",
     description:
-      "A sustainability-focused web app that helps users discover greener product alternatives, with personalized recommendations.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Postgres"],
-    github: "https://github.com/your-username/econext",
-    live: "https://econext.example.com",
+      "A Retrieval-Augmented Generation system using LangChain to enable natural-language search over complex engineering manuals. Implemented table-aware document parsing, semantic chunking, and hybrid retrieval to return accurate, cited technical specifications and procedures.",
+    tech: ["Python", "LangChain", "RAG", "Semantic Chunking"],
   },
   {
-    title: "TaskFlow",
+    title: "Edusoft — School Management SaaS",
     description:
-      "A minimalist task manager with keyboard-first navigation, drag-and-drop boards, and offline support.",
-    tech: ["React", "Vite", "Zustand", "IndexedDB"],
-    github: "https://github.com/your-username/taskflow",
+      "Multi-tenant SaaS platform supporting admissions, attendance, fee management, and reporting across 40+ school institutions. Features 8-tier role-based access control and 8 dedicated dashboards per user role.",
+    tech: ["React", "REST API", "PostgreSQL", "AWS EC2", "AWS S3"],
   },
   {
-    title: "DevPulse",
+    title: "Geoscience Well Log Database",
     description:
-      "A developer dashboard that aggregates GitHub activity, CI status, and code review stats in one view.",
-    tech: ["Next.js", "tRPC", "Prisma", "PostgreSQL"],
-    github: "https://github.com/your-username/devpulse",
-    live: "https://devpulse.example.com",
+      "Prototype database system enabling geoscientists to store, standardize, and query well log data from LAS files across multiple wells, improving data consistency and cutting retrieval time for geological measurements.",
+    tech: ["PostgreSQL", "Python", "SQL", "LAS Files"],
   },
   {
-    title: "Notesy",
+    title: "Blackjack AI Player",
     description:
-      "A Markdown-first notes app with bidirectional links, full-text search, and end-to-end encryption.",
-    tech: ["React", "TypeScript", "WebCrypto", "Supabase"],
-    github: "https://github.com/your-username/notesy",
+      "AI decision algorithm in Java automating player decision-making across all standard Blackjack game states, demonstrating algorithmic design and object-oriented programming principles.",
+    tech: ["Java", "OOP", "AI Algorithms"],
   },
 ];
