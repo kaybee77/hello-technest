@@ -3,7 +3,7 @@ export interface ExperienceEntry {
   company: string;
   period: string;
   location?: string;
-  bullets: string[];
+  summary: string;
 }
 
 export const experience: ExperienceEntry[] = [
@@ -11,35 +11,23 @@ export const experience: ExperienceEntry[] = [
     role: "AI Capstone Intern",
     company: "Genesis AI Garage — HR Document Retrieval System (RAG)",
     period: "May 2025 — Sept 2025",
-    bullets: [
-      "Co-developed a RAG system enabling natural language querying across 170+ HR and enterprise documents, replacing manual search and delivering near-instant document retrieval company-wide.",
-      "Evaluated and benchmarked multiple embedding models, selecting the optimal model that improved retrieval relevance and response accuracy across the full document collection.",
-      "Engineered document chunking and preprocessing pipelines to support the chosen embedding strategy, improving consistency and retrieval quality across all document types.",
-      "Built frontend UI and backend integration enabling non-technical staff to query HR documents independently, eliminating reliance on engineering support.",
-      "Validated retrieval outputs across 100+ test cases using hit rate and cosine similarity metrics (0.75–0.89), achieving ~90% retrieval accuracy.",
-    ],
+    summary:
+      "Worked on the development of a document search system that allowed users to ask questions in plain language and retrieve information from more than 170 HR and business documents in seconds. Designed and tested document preprocessing and chunking workflows, evaluated different embedding models, and built the user interface and backend integration so non-technical staff could search documents independently. Conducted testing across more than 100 scenarios and improved retrieval performance to deliver accurate and relevant results consistently.",
   },
   {
     role: "Medical Image Labeling Volunteer",
     company: "DIAG Lab, Memorial University of Newfoundland",
     period: "Nov 2024 — Dec 2025",
     location: "St. John's, NL",
-    bullets: [
-      "Manually annotated 2,000+ CT scan images, contributing high-quality labeled datasets that directly supported automated image analysis algorithm development.",
-      "Applied medical image analysis software to label anatomical structures across CT scans, building practical exposure to computational anatomy and clinical research workflows.",
-      "Contributed to data labeling pipelines supporting ML model training, improving dataset quality and annotation consistency for medical image interpretation.",
-    ],
+    summary:
+      "Medical Image Labeling Volunteer with experience preparing high-quality annotated datasets for medical imaging research. Labeled more than 2,000 CT scan images using specialized image analysis software to support the development and testing of automated image analysis tools. Worked within clinical research workflows to ensure accuracy and consistency across annotations, helping create reliable datasets for evaluating and improving medical imaging algorithms.",
   },
   {
     role: "Full-Stack Developer",
     company: "AccountIT Ghana",
     period: "Jun 2023 — Nov 2024",
     location: "Remote",
-    bullets: [
-      "Collaborated on designing multi-tenant PostgreSQL schemas enabling secure, customised data isolation across 40+ school clients, with each institution provisioned its own tailored database configuration.",
-      "Built and contributed to 8 role-specific React dashboards for Edusoft, a multi-tenant school management SaaS, improving operational visibility across admissions, attendance, fee management, and reporting workflows, deployed on AWS (EC2 & S3).",
-      "Independently implemented CI/CD pipelines using GitHub Actions, supporting reliable deployments across 40+ client-facing school websites.",
-      "Reviewed and tested REST APIs with 8-tier role-based access control, validating permission management and ensuring correct access behavior across all user roles.",
-    ],
+    summary:
+      "Full-Stack Engineer with experience building and maintaining web applications that help organizations run their operations more efficiently. Contributed to the development of ACIT EduSoft, a school management platform that supports student admissions, fee collection, attendance tracking, timetable creation, parent access, and online classes. Developed responsive front-end interfaces using React, JavaScript, HTML, and CSS, and built secure back-end services and REST APIs using Node.js, Express, and PostgreSQL. Worked closely with clients and colleagues to translate business requirements into practical software solutions and used Git, Docker, and cloud deployment tools to deliver reliable applications used in day-to-day operations.",
   },
 ];

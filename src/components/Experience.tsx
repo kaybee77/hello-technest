@@ -40,17 +40,9 @@ export function Experience() {
                   {entry.location}
                 </div>
               ) : null}
-              <ul className="mt-3 space-y-2">
-                {entry.bullets.map((b, j) => (
-                  <li
-                    key={j}
-                    className="flex items-start gap-2.5 text-sm text-muted-foreground"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {entry.summary}
+              </p>
             </motion.li>
           ))}
         </ol>

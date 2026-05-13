@@ -11,8 +11,8 @@ export const projects: Project[] = [
   {
     title: "Engineering RAG for OEM Manuals",
     description:
-      "A Retrieval-Augmented Generation system using LangChain to enable natural-language search over complex engineering manuals. Implemented table-aware document parsing, semantic chunking, and hybrid retrieval to return accurate, cited technical specifications and procedures.",
-    tech: ["Python", "LangChain", "RAG", "Semantic Chunking"],
+      "Built a document search system for OEM manuals and technical documents that allows users to ask maintenance and parts questions in plain language and quickly retrieve relevant information, including tables, specifications, and part numbers. Developed the full pipeline for document parsing, table extraction, chunking, indexing, and search, and built a web interface and API that enable engineers and maintenance teams to access technical information without manually searching through hundreds of pages of documentation.",
+    tech: ["Python", "FastAPI", "ChromaDB", "Hybrid Retrieval"],
   },
   {
     title: "Edusoft — School Management SaaS",
