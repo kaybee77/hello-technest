@@ -4,6 +4,60 @@ import { ArrowDown, Briefcase, Code2, Github, GitCommit, Linkedin, Mail, Star } 
 import { buttonVariants } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 
+function CodeWindow() {
+  const [shown, setShown] = useState(0);
+
+  useEffect(() => {
+    if (shown >= 9) return;
+    const t = setTimeout(() => setShown((s) => s + 1), shown === 0 ? 600 : 260);
+    return () => clearTimeout(t);
+  }, [shown]);
+
+  const Line = ({ n, children }: { n: number; children: React.ReactNode }) => (
+    <div className="flex gap-4">
+      <span className="w-4 shrink-0 select-none text-right text-xs leading-7 text-white/20">{n}</span>
+      <span className="leading-7">{children}</span>
+    </div>
+  );
+  const K = ({ c }: { c: string }) => <span className="text-violet-400">{c}</span>;
+  const P = ({ c }: { c: string }) => <span className="text-sky-300">{c}</span>;
+  const S = ({ c }: { c: string }) => <span className="text-emerald-400">{c}</span>;
+  const B = ({ c }: { c: string }) => <span className="text-orange-400">{c}</span>;
+  const M = ({ c }: { c: string }) => <span className="text-zinc-500">{c}</span>;
+
+  return (
+    <div className="w-[420px] overflow-hidden rounded-xl border border-white/10 bg-[#0d0f17] shadow-2xl shadow-brand/15">
+      <div className="flex items-center gap-1.5 border-b border-white/5 bg-white/5 px-4 py-2.5">
+        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+        <span className="ml-auto font-mono text-xs text-white/25">kwame.ts</span>
+      </div>
+      <div className="p-5 font-mono text-sm">
+        {shown > 0 && <Line n={1}><K c="const " /><span className="text-white">developer</span><K c=" = {" /></Line>}
+        {shown > 1 && <Line n={2}><P c="  name" /><M c=": " /><S c='"Kwame Essuman"' /><M c="," /></Line>}
+        {shown > 2 && <Line n={3}><P c="  role" /><M c=": " /><S c='"AI Engineer"' /><M c="," /></Line>}
+        {shown > 3 && <Line n={4}><P c="  location" /><M c=": " /><S c={"\"St. John's, NL\""} /><M c="," /></Line>}
+        {shown > 4 && (
+          <Line n={5}>
+            <P c="  stack" /><M c=": [" /><S c='"React"' /><M c=", " /><S c='"Python"' /><M c=", " /><S c='"FastAPI"' /><M c="]," />
+          </Line>
+        )}
+        {shown > 5 && <Line n={6}><P c="  available" /><M c=": " /><B c="true" /><M c="," /></Line>}
+        {shown > 6 && <Line n={7}><K c="};" /></Line>}
+        {shown > 7 && <Line n={8}><span /></Line>}
+        {shown > 8 && <Line n={9}><M c="// Open to full-time opportunities 🚀" /></Line>}
+        {shown < 9 && (
+          <div className="flex gap-4">
+            <span className="w-4 shrink-0 text-right text-xs leading-7 text-white/20">{shown + 1}</span>
+            <span className="mt-2.5 h-4 w-2 animate-pulse rounded-sm bg-brand/70" />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const roles = [
   "Software Engineer",
   "Full-Stack Developer",
@@ -166,34 +220,14 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Avatar */}
+        {/* Code window */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.88 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.65, ease: "easeOut", delay: 0.15 }}
-          className="relative hidden h-72 w-72 shrink-0 lg:block"
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.65, ease: "easeOut", delay: 0.2 }}
+          className="hidden shrink-0 lg:block"
         >
-          {/* Spinning decorative rings */}
-          <div
-            className="absolute -inset-4 animate-spin rounded-full border border-brand/20"
-            style={{ animationDuration: "22s" }}
-          />
-          <div
-            className="absolute -inset-8 animate-spin rounded-full border border-brand/10"
-            style={{ animationDuration: "35s", animationDirection: "reverse" }}
-          />
-
-          <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-br from-brand/40 to-brand/0 blur-2xl" style={{ animationDuration: "4s" }} />
-          <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-brand/30 bg-card shadow-2xl shadow-brand/20">
-            <img
-              src={profile.avatarUrl}
-              alt={profile.name}
-              className="h-full w-full object-cover"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-              }}
-            />
-          </div>
+          <CodeWindow />
         </motion.div>
       </div>
     </section>

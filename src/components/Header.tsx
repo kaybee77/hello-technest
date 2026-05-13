@@ -58,7 +58,7 @@ export function Header() {
           href="#top"
           className="font-mono text-sm font-semibold tracking-tight text-brand transition-opacity hover:opacity-80"
         >
-          {"<your-name />"}
+          {"<kwame />"}
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">

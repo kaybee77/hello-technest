@@ -83,9 +83,20 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.1 }}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-brand/50"
+              className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/10"
+              onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+              }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-brand/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), hsl(217 91% 60% / 0.10), transparent)",
+                }}
+              />
               <div className="relative flex flex-1 flex-col gap-3">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-lg font-semibold tracking-tight">
