@@ -50,7 +50,7 @@ function CodeWindow() {
         {shown < 9 && (
           <div className="flex gap-4">
             <span className="w-4 shrink-0 text-right text-xs leading-7 text-white/20">{shown + 1}</span>
-            <span className="mt-2.5 h-4 w-2 animate-pulse rounded-sm bg-[hsl(192_100%_50%/0.7)]" />
+            <span className="mt-2.5 h-4 w-2 animate-pulse rounded-sm bg-brand/70" />
           </div>
         )}
       </div>
